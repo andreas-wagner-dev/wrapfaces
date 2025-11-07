@@ -1,1 +1,254 @@
-# wrapfaces
+# **🎭 WrapFaces**
+
+**WrapFaces** is the component oriented **Wrap**per solution for Jakarta Server **Faces** (JSF).</br>The lightweight framework transfers the **object-oriented discipline** of desktop frameworks (e.g., Swing/SWT) to the web.
+
+💥 **If you are serious about Object-Orientation and love the Web?**
+* 👉 **Then 🎭 WrapFaces is 🎯 exactly the 👍 right 🎠 Horse for 😎 you!**
+
+---
+
+## 🔑 Key Facts
+
+### 🚫 **No Markup Boilerplate**
+The entire **UI structure and logic** is defined exclusively in **type-safe Java code**. The XHTML serves merely as an **inactive, empty container**.
+
+**Result:** 100% refactorability, compile-time validation, and elimination of XML boilerplate.
+
+### 🧠 **True Heap State**
+The **view state** lives as a **long-lived Java object** in the JVM Heap (View-Scoped). The statelessness of the HTTP protocol is **transparently and completely abstracted**.
+
+**Result:** A **desktop application development experience** on the web; focus on OO logic, not protocol details.
+
+### 🛡️ **Model Autonomy (SRP Enforcement)**
+The **Domain Model (Value Object)** takes full responsibility for its own presentation via the `Model::displayFrom()` method. This enforces the **Single Responsibility Principle (SRP)**.
+
+**Result:** An end to **anemic data models**. The presentation belongs to the object being presented.
+
+### ✅ **Immutability Binding**
+The framework prevents **harmful setter calls** from the UI binding. Instead, a **new, immutable instance** of the Domain Model is created from the UI values via the `map()` mechanism.
+
+**Result:** Guaranteed data integrity and reduction of side effects.
+
+---
+
+## 🛑 **No Compromises: "UI of Objects" as Architectural Dogma**
+
+WrapFaces is more than a framework—it is a **manifesto for "UI of Objects"** against anemic data containers and leaky abstractions in the Web UI—a **puristic approach** against the fundamental flaws of data- and markup-centric MVC through consistent, type-safe abstractions.
+
+### 🎯 **Goal:** 100% integrity of Object-Orientation in web development with the **"UI of Objects"** approach.
+
+**"UI of Objects"** is a design philosophy that **consistently adheres to the principles of object-orientation**.
+
+Instead of viewing the user interface as a collection of screens, forms, and commands, it is understood as a **system of interacting, real objects**. The user does not interact with a user interface that manipulates data; the user interacts **directly with the objects** found in the system.
+
+### **Core Principles of "UI of Objects"**
+
+#### **Object at the Center**
+The user interface is organized around the **system's objects** (e.g., Customer, Product, Order) and not around the actions one can perform with them. The user first selects an object and then decides what to do with it.
+
+#### **Tight Coupling between Domain and UI**
+In contrast to the strict separation in classic MVC, the UI is seen as a **natural property of the domain objects**. An object knows how to display itself. This leads to **high cohesion** and **strong encapsulation**.
+
+#### **Behavior instead of just Data**
+Domain objects are not simple **Data Transfer Objects (DTOs)**. They encapsulate both data and the behavior necessary to manipulate that data. The **"Tell, Don't Ask"** principle is consistently applied: The UI component requests the domain object to do something, rather than querying its data and manipulating it from the outside.
+
+#### **Composition of Objects**
+Complex user interfaces are created through the **composition of smaller, self-contained UI objects**. A `ProductList` consists of several `ProductCard` objects, each representing its own domain object.
+
+### **Advantages of the Concept**
+
+- **Intuitive Operation:** The UI mirrors the user's way of thinking, who thinks in objects, not tasks. This makes operation more intuitive.
+- **High Reusability:** The UI components are tightly coupled with their respective domain object. This makes them modular and easier to reuse.
+- **Better Maintainability:** The encapsulation of data and behavior within the objects ensures that changes remain localized.
+- **Alignment of UX and OOP:** The concept aligns **User Experience (UX)** and the principles of **Object-Oriented Programming (OOP)**, as both are based on the idea of objects and their relationships.
+
+---
+
+## 🧠 **The TRUTH: About traditional layered architectures with MVC etc.**
+
+WrapFaces was developed to **consequently enforce the principles of Object-Orientation (OOP)** and **Domain-Driven Design (DDD)** in the UI layer. It corrects the inherent weaknesses of the traditional, data- and markup-centric MVC pattern:
+
+| **Principle**       | **Traditional MVC**                                                                 | **UI of Objects with WrapFaces → Solution**                                                                 |
+|----------------------|-------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------|
+| **Encapsulation**    | Controllers violate encapsulation by manipulating internal model data.              | The Value Object creates itself anew. No harmful setter-bindings by UI elements.                          |
+| **Model Role**       | The model degenerates into an anemic data container without behavior.              | The Model is autonomous: A Value Object with embedded behavior and the ability to display itself (`displayFrom()`). |
+| **Controller**       | The controller acts as a central hub, knows model internals, and violates the "Tell, Don't Ask" principle as well as the Single Responsibility Principle (SRP). | Logic is integrated directly into type-safe lambda handlers. The controller role is reduced to minimal routing. The component decides for itself. |
+| **State**            | The developer must manually manage state in the HttpSession and handle HTTP details. | Web pages are stateful Java objects in the JVM Heap. HTTP protocol details are transparently abstracted. |
+| **Autonomy**         | Display and manipulation logic is spread across three layers. Low cohesion.         | The domain object bundles data, behavior, and presentation. Maximum cohesion. |
+
+---
+
+## 🛠️ **The Purist's Tools**
+
+WrapFaces provides the necessary tools to enforce a **clean object-oriented architecture**:
+
+### 💥 **Markup Destruction**
+100% of UI logic and the component tree is in Java. The XHTML markup serves merely as a **simple, non-critical container**.
+
+### ⚡ **True State**
+Components live as **Java objects in the heap**. The framework handles the state management.
+
+### 🧩 **Pure Composition**
+The UI tree is defined **type-safely in Java**. Every component is an **encapsulated domain object**.
+
+### 🔒 **Type-Safe Binding**
+The model concept binds UI values via **late-binding** to new, immutable domain model instances.
+
+### 🛠️ **Immediate Action**
+Actions (clicks, changes, etc.) are bound directly to **Java Lambda expressions**.
+
+---
+
+## **WrapFaces: MVC with Encapsulation**
+
+WrapFaces enforces the **MVC pattern** from a **strictly object-oriented perspective**—a clear demarcation from traditional layered architectures with vertical layers and technical responsibility.
+
+| **Role**            | **WrapFaces / OOP Approach**                                                                 | **Traditional JSF / DTO & Markup Approach**                                                                 |
+|---------------------|---------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------|
+| **Model**           | The pure Value Object. It encapsulates its presentation (`displayFrom()`).                | Usually a Managed-Bean that violates encapsulation via setter-bindings.                                      |
+| **View**            | The dynamic component hierarchy generated in Java.                                          | The `.xhtml` file, static and hard to abstract.                                                              |
+| **Controller**      | Behavior is integrated directly into the components or the mapping logic.                  | The central, overloaded Managed Bean that carries too many responsibilities.                                |
+
+---
+
+## 🚀 **The Code: Type Safety in Action**
+
+Stop messing around with XML and building your application around DTOs. The 
+* 🔎 **focus is on type-safe Java code**.
+
+### 📥 **Installation**
+
+The standard Maven or Gradle dependency is required:
+
+#### **Maven Dependency**
+```xml
+<dependency>
+    <groupId>org.wrapfaces</groupId>
+    <artifactId>wrapfaces-core</artifactId>
+    <version>[LATEST VERSION]</version>
+</dependency>
+```
+
+### The Connection: The Controller
+The controller, as ```LoginView```, is the minimal contact point to the JSF world. It only serves to hold and provide the component tree generated by WrapFaces. Business logic is forbidden here.
+```java
+// Example: The LoginView (Your JSF-Managed-Bean)
+@Named @ViewScoped
+public class LoginView {
+    private HtmlForm form;
+
+    @PostConstruct
+    public void init() {
+        // 1. Creation of the Domain Model
+        User user = new User("admin", new Credential("secret123"));
+        // 2. The Model creates the UI
+        form = user.displayFrom();
+    }
+
+    // JSF requires Getter/Setter for the binding
+    public HtmlForm getForm() { return form; }
+    public void setForm(HtmlForm form) { this.form = form; }
+}
+```
+
+In the corresponding XHTML:
+```xml
+<h:form binding="#{loginView.form}"/>
+```
+Only **one line** is needed.
+
+
+### The Autonomous Component (Inside the User class)
+
+The model takes responsibility for its presentation and the mapping of UI values into a new, immutable instance:
+
+```java
+// UI-Creation (inside the User class)
+public Form displayFrom() {
+    PanelGrid<User> userGrid = new PanelGrid<User>("userGrid")
+        // addRow creates Label and Input
+        .addRow(new Label("lblUser", "User:"), new Text("txtUser", this.name))
+        .addRow(new Label("lblSecret", "Secret:"), credential.displayInput())  // ← Composition!
+        // CRITICAL: Defines HOW the UI values create a NEW User object
+        .map(User::new);
+
+    PanelGroup<?> buttonGroup = new PanelGroup<>("btnGrp",
+        new Button("btnSubmit", "Send").onAction(e -> {
+            // Retrieval of the NEW MODEL from the UI values
+            User updatedUser = userGrid.model();
+            System.out.println("Submitted. Updated User: " + updatedUser.toString());
+        })
+    );
+
+    // The final Form, bound to #{loginController.form}
+    return new Form("loginForm", userGrid, buttonGroup);
+}
+```
+
+
+## ⚙️ The Framework: The Implementation Guide
+
+**WrapFaces** enforces discipline through the clear separation of technical inheritance (JSF) and application-specific logic (Hooks). 
+* The wrapper uses the Decorator Pattern to inject logic surgically.
+
+**Purpose of the Decorator**
+* The wrapper class encloses the native JSF component and serves as a type-safe decorator, offering clear, ```overridable entry points``` (Hooks) into the rendering process.
+
+**The Contract:** ```WrapComponent<T>```
+* Defines the contract for transferring the transient state to the underlying JSF component before rendering.
+* The Architecture: The Abstract Base Class (```*Wrap```)
+* The base class technically inherits from the JSF component but uses Delegation and Composition for all application logic. This is the central control point in ```encodeBegin():```
+
+```java
+// The necessary inheritance from the JSF component
+public abstract class LabelWrap extends HtmlOutputText implements WrapComponent<HtmlOutputText>, Serializable {
+    // ... state in transient fields ...
+
+    @Override
+    public void encodeBegin(FacesContext context) throws IOException {
+        // 1. initialize Hook: Transfers the Java state to the JSF component
+        initialize(context, this);
+        // 2. Visibility Check (controlled by initialize)
+        if (!this.isRendered()) { return; }
+
+        // 3. head Hook: Resource Injection
+        head(context, context.getViewRoot());
+
+        // 4. render Hook: Attribute Setting (Last Chance)
+        render(context, this);
+
+        // 5. Delegation to JSF Rendering
+        super.encodeBegin(context);
+    }
+}
+```
+
+### The Concrete Component: Overriding the Hooks
+The logic resides in the hooks, which can be overridden in the concrete implementation or the base classes:
+
+| **Hook Method**      | **Use Case (Real Control)**                                                                                                                                                     | **Example**                                                                                                                                                     |
+|----------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `initialize(...)`    | Dynamic Visibility: Prevents rendering of the entire component if a condition fails.                                                                                     | `if (!isUserAdmin()) uiComponent.setRendered(false);`                                                                                                         |
+| `render(...)`        | Attribute Dominance: Sets dynamic attributes immediately before the renderer call.                                                                                                           | `uiComponent.getPassThroughAttributes().put("role", "presentation");`                                                                                         |
+
+
+## SOURCES & DEEPER CONCEPTS
+
+The design philosophy of WrapFaces is based on measurable OOP metrics (Cohesion/Coupling) rather than subjective layered architectures.
+
+| **Source**                          | **Concept**                                                                                                                                                                                                 |
+|-------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **javadevguy.wordpress.com**        | Pragmatic SRP & Cohesion: The definition of SRP as maximizing cohesion and minimizing coupling originates significantly from Robert Bräutigam.                                                      |
+| **yegor256.com**                    | Object Mechanics & Immutability: The concepts of encapsulation, immutability, and the strict avoidance of getters/setters (Naked Data) are heavily influenced by Yegor Bugayenko. |
+
+
+## 🤝 CONTRIBUTING
+Participation is welcome. However, every contribution must adhere to the puristic, object-oriented standards of the framework.
+
+## 📄 License
+This project is under the MIT License.
+
+## 📬 Support
+Questions, suggestions, or problems? Get in touch!
+
+
