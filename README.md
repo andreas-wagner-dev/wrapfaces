@@ -33,7 +33,7 @@ The framework prevents **harmful setter calls** from the UI binding. Instead, a 
 
 ## 🛑 **No Compromises: "UI of Objects" as Architectural Dogma**
 
-WrapFaces is more than a framework—it is a **manifesto for "UI of Objects"** against anemic data containers and leaky abstractions in the Web UI—a **puristic approach** against the fundamental flaws of data- and markup-centric MVC through consistent, type-safe abstractions.
+WrapFaces is more than a JSF commponent library — it is a **manifesto for "UI of Objects"** against anemic data containers and leaky abstractions in the Web UI — a **puristic approach** against the fundamental flaws of data- and markup-centric MVC through consistent, type-safe abstractions.
 
 ### 🎯 **Goal:** 100% integrity of Object-Orientation in web development with the **"UI of Objects"** approach.
 
@@ -186,7 +186,7 @@ public Form displayFrom() {
 ```
 
 
-## ⚙️ The Framework: The Implementation Guide
+## ⚙️ The Library: The Implementation Guide
 
 **WrapFaces** enforces discipline through the clear separation of technical inheritance (JSF) and application-specific logic (Hooks). 
 * The wrapper uses the Decorator Pattern to inject logic surgically.
