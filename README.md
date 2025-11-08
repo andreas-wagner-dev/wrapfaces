@@ -15,7 +15,7 @@ The **Domain Object** takes full responsibility for its own presentation via the
 **Result:** An end to **anemic data models**. The presentation belongs to the object being presented.
 
 ### ✅ **Immutability Binding**
-The framework prevents **harmful setter calls** from the UI binding. Instead, a **new, immutable instance** of the Domain Model is created from the UI values via the `map()` mechanism.
+It's prevents **harmful setter calls** from the UI binding. Instead, a **new, immutable instance** of the Domain Model is created from the UI values via the `map()` mechanism.
 
 **Result:** Guaranteed data integrity and reduction of side effects.
 
