@@ -1,6 +1,6 @@
 # **🎭 WrapFaces**
 
-**WrapFaces** is a component **Wrap**per solution for Jakarta Server **Faces** (JSF).</br>It's transfers the **object-oriented discipline** of desktop frameworks (e.g., Swing/SWT) to the web.
+**WrapFaces** is a component **Wrap**per solution for Jakarta Server **Faces** (JSF).</br>It's transfers the **object-oriented discipline** of desktop frameworks like Swing to the web.
 
 💥 **If you are serious about Object-Orientation and love the Web?**
 * 👉 **Then 🎭 WrapFaces is 🎯 exactly the 👍 right 🎠 Horse for 😎 you!**
