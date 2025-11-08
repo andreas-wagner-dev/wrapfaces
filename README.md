@@ -9,6 +9,16 @@
 
 ## 🔑 Key Facts
 
+### 🛡️ **Model Autonomy (SRP Enforcement)**
+The **Domain Object** takes full responsibility for its own presentation via the `Model::displayFrom()` method. This enforces the **Single Responsibility Principle (SRP)**.
+
+**Result:** An end to **anemic data models**. The presentation belongs to the object being presented.
+
+### ✅ **Immutability Binding**
+The framework prevents **harmful setter calls** from the UI binding. Instead, a **new, immutable instance** of the Domain Model is created from the UI values via the `map()` mechanism.
+
+**Result:** Guaranteed data integrity and reduction of side effects.
+
 ### 🚫 **No Markup Boilerplate**
 The entire **UI structure and logic** is defined exclusively in **type-safe Java code**. The XHTML serves merely as an **inactive, empty container**.
 
@@ -18,16 +28,6 @@ The entire **UI structure and logic** is defined exclusively in **type-safe Java
 The **view state** lives as a **long-lived Java object** in the JVM Heap (View-Scoped). The statelessness of the HTTP protocol is **transparently and completely abstracted**.
 
 **Result:** A **desktop application development experience** on the web; focus on OO logic, not protocol details.
-
-### 🛡️ **Model Autonomy (SRP Enforcement)**
-The **Domain Model (Value Object)** takes full responsibility for its own presentation via the `Model::displayFrom()` method. This enforces the **Single Responsibility Principle (SRP)**.
-
-**Result:** An end to **anemic data models**. The presentation belongs to the object being presented.
-
-### ✅ **Immutability Binding**
-The framework prevents **harmful setter calls** from the UI binding. Instead, a **new, immutable instance** of the Domain Model is created from the UI values via the `map()` mechanism.
-
-**Result:** Guaranteed data integrity and reduction of side effects.
 
 ---
 
