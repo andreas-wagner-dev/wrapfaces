@@ -187,8 +187,9 @@ public static class Credential implements Serializable {
 
 ```java
 // Encapsulation of HtmlInputText (as Text field)
-public static class Text extends HtmlInputText
-        implements WrapComponent<HtmlInputText>, ValueChangeListener, AjaxBehaviorListener, Serializable {
+public static class Text extends HtmlInputText implements WrapComponent<HtmlInputText>, 
+                                    ValueChangeListener, AjaxBehaviorListener, Serializable {
+
     private static final long serialVersionUID = 1L;
 
     private final String id;
@@ -396,5 +397,4 @@ This project is under the MIT License.
 
 ## 📬 Support
 Questions, suggestions, or problems? Get in touch!
-
 
