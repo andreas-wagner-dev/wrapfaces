@@ -1,6 +1,7 @@
 # 🎭 **WrapFaces**
 
-**WrapFaces** is a component **Wrap**per solution for Jakarta Server **Faces** (JSF).</br>It's transfers the **object-oriented discipline** of desktop frameworks like Swing to the web.
+**WrapFaces** is a component **Wrap**per solution for Jakarta Server **Faces** (JSF).
+</br>It's transfers the **object-oriented discipline** of desktop frameworks like Swing to the web.
 
 💥 **If you are serious about Object-Orientation and love the Web?**
 * 👉 **Then WrapFaces is exactly the right 🎠 Horse for you!**
@@ -12,8 +13,9 @@
 ---
 ## 🔑 Key Facts
 
-### ⚛️ **Model Autonomy (SRP Enforcement)**
-The **Domain Object** takes full responsibility for its own presentation via the `Model::displayFrom()` method. This enforces the **Single Responsibility Principle (SRP)**.
+### ⚛️ **Model Autonomy**
+The **Domain Object** takes full responsibility for its own presentation via the `Model::displayFrom()` method. 
+</br>This enforces the **Single Responsibility Principle** (SRP) in object oriented way.
 
 ✅ An end to **anemic data models**. The presentation belongs to the object being presented.
 
@@ -22,7 +24,7 @@ It's prevents **harmful setter calls** from the UI binding. Instead, a **new, im
 
 ✅ Guaranteed data integrity and reduction of side effects.
 
-### 🚫 **No Markup & DTO Boilerplate**
+### 🚫 **No Markup Boilerplate**
 The entire **UI structure and logic** is defined exclusively in **type-safe Java code**. The XHTML serves merely as an **inactive, empty container**.
 
 ✅ 100% refactorability, compile-time validation, and elimination of XML boilerplate.
