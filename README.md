@@ -14,8 +14,7 @@
 ## 🔑 Key Facts
 
 ### ⚛️ **Model Autonomy**
-The **Domain Object** takes full responsibility for its own presentation via the `Model::displayFrom()` method. 
-</br>This enforces the **Single Responsibility Principle** (SRP) in object oriented way.
+The **Domain Object** takes full responsibility for its own presentation via the `Model::displayFrom()` method. This enforces the **Single Responsibility Principle** (SRP) in the object oriented way.
 
 ✅ An end to **anemic data models**. The presentation belongs to the object being presented.
 
@@ -86,9 +85,9 @@ In the corresponding XHTML it use the **binding** attribute of JSF tags (not val
 ```
 only **one line** is needed.
 
-### The Autonomous Component **(Inside the domain Object class)**
-The domain model takes responsibility for its presentation and the mapping of UI values into a new, immutable instance:
-* 👉 **Business logic is only here**.
+### The Autonomous Component 
+The domain model takes responsibility for its presentation and persistence with the mapping of UI values into a new, immutable instance:
+* 👉 **Business logic is only here** (Inside the domain Object class).
 ```java
 // UI-Creation (inside the User class)
 public class User implements Serializable {
