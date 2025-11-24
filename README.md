@@ -13,7 +13,7 @@
 ---
 ## 🔑 Key Facts
 
-### ⚛️ **Model Autonomy**
+### ⚛️ **Object Autonomy**
 The **Domain Object** takes full responsibility for its own presentation via the `Model::displayFrom()` method. 
 </br>This enforces the **Single Responsibility Principle** (SRP) in object oriented way.
 
