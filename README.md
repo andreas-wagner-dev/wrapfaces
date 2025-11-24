@@ -32,6 +32,7 @@ The adapter, as ```LoginView```, is the minimal contact point to the JSF world. 
 // Example: The LoginView (Your JSF-Managed-Bean)
 @Named @ViewScoped
 public class LoginView {
+
     private HtmlForm form;
 
     @PostConstruct
@@ -45,6 +46,7 @@ public class LoginView {
     // JSF requires Getter/Setter for the binding
     public HtmlForm getForm() { return form; }
     public void setForm(HtmlForm form) { this.form = form; }
+
 }
 ```
 
@@ -60,27 +62,115 @@ The domain model takes responsibility for its presentation and the mapping of UI
 
 ```java
 // UI-Creation (inside the User class)
-public Form displayFrom() {
-    PanelGrid<User> userGrid = new PanelGrid<User>("userGrid")
-        // addRow creates Label and Input
-        .addRow(new Label("lblUser", "User:"), new Text("txtUser", this.name))
-        .addRow(new Label("lblSecret", "Secret:"), credential.displayInput())  // ← Composition!
-        // CRITICAL: Defines HOW the UI values create a NEW User object
-        .map(User::new);
+public static class User implements Serializable {
 
-    PanelGroup<?> buttonGroup = new PanelGroup<>("btnGrp",
-        new Button("btnSubmit", "Send").onAction(e -> {
-            // Retrieval of the NEW MODEL from the UI values
-            User updatedUser = userGrid.model();
-            System.out.println("Submitted. Updated User: " + updatedUser.toString());
-        })
-    );
+    private static final long serialVersionUID = 1L;
+    private String name;
+    private Credential credential;
 
-    // The final Form, bound to #{loginController.form}
-    return new Form("loginForm", userGrid, buttonGroup);
+    public User(String name, Credential credential) {
+        this.name = name;
+        this.credential = credential;
+    }
+
+    public Credential credential() {
+        return credential;
+    }
+
+    // Constructor for mapping the values from the Component back into the object
+    public User(Map<String, Object> map) {
+        // delegates the mapping to the with nested object
+        this(map.getOrDefault("txtUser", "").toString(), new Credential(map));
+    }
+
+    // The method that displays itself as UI components
+
+    public Form displayFrom() {
+
+        // PanelGroup for user input
+        PanelGrid<User> userGrid = new PanelGrid<User>("userGrid")
+                // Use a 2-column layout (default for PanelGrid)
+                // NEUE, VEREINFACHTE SYNTAX DANK ÜBERLADENER addRow-METHODE
+                .addRow(new Label("lblUser", "User:"), new Text("txtUser", this.name))
+                .addRow(new Label("lblSecret", "Secret:"), credential.displayInput())
+                // Defines the mapping function that converts the Map back into a User object
+                .map(User::new); // Uses the Map constructor above
+
+        // PanelGroup for the buttons
+        PanelGroup buttonGroup = new PanelGroup("btnGrp",
+                new Button("btnCancel", "Abbrechen").onAction(e -> System.out.println("Canceled.")),
+                new Button("btnSubmit", "Senden").onAction(e -> {
+                    // Here, the new User model is retrieved from the UI values
+                    User updatedUser = userGrid.model(); // Use userGrid here
+                    System.out.println("Submitted. Updated User: " + updatedUser.toString());
+                    updatedUser.credential.authenticate();
+                }));
+
+        return new Form("loginForm", userGrid, buttonGroup);
+    }
+
+    // No!!! Getter/Setter like JSF beans - not OOP conform
+    // for EL binding present object with toString() and use hashCode for id.
+
+    @Override
+    public String toString() {
+        return "name:" + name + ", credential:" + credential;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getClass().getSimpleName(), name);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return obj != null && hashCode() == obj.hashCode();
+    }
+}
+
+public static class Credential implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+    private String value;
+
+    public Credential(String value) {
+        this.value = value;
+    }
+
+    // Constructor for mapping the value from the Component Map back into the object
+    public Credential(Map<String, Object> map) {
+        this(map.getOrDefault("txtSecret", "").toString());
+    }
+
+    public void authenticate() {
+        // Simulate authentication
+        System.out.println("Authenticating with secret: " + value);
+    }
+
+    // The method that displays itself as a UI component
+    public Text displayInput() {
+        return new Text("txtSecret", value);
+    }
+
+    // No!!! Getter/Setter like JSF beans - not OOP conform
+    // for EL binding present object with toString() and hashCode for id.
+
+    @Override
+    public String toString() {
+        return "*****";
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getClass().getSimpleName(), value);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return obj != null && hashCode() == obj.hashCode();
+    }
 }
 ```
-
 
 ## ⚙️ The Library: The Implementation Guide
 
@@ -92,29 +182,86 @@ public Form displayFrom() {
 
 **The Contract:** ```WrapComponent<T>```
 * Defines the contract for transferring the transient state to the underlying JSF component before rendering.
-* The Architecture: The Abstract Base Class (```*Wrap```)
+* (optional) The Architecture: The Abstract Base Class (```*Wrap```)
 * The base class technically inherits from the JSF component but uses Delegation and Composition for all application logic. This is the central control point in ```encodeBegin():```
 
 ```java
-// The necessary inheritance from the JSF component
-public abstract class LabelWrap extends HtmlOutputText implements WrapComponent<HtmlOutputText>, Serializable {
-    // ... state in transient fields ...
+// Encapsulation of HtmlInputText (as Text field)
+public static class Text extends HtmlInputText
+        implements WrapComponent<HtmlInputText>, ValueChangeListener, AjaxBehaviorListener, Serializable {
+    private static final long serialVersionUID = 1L;
+
+    private final String id;
+    private final String initialValue;
+    private List<Changed<EventObject, String>> events = new ArrayList<>(0);
+    private boolean initialized = false;
+
+    public Text() {
+        this.id = null;
+        this.initialValue = null;
+    }
+
+    public Text(String id, String initialValue) {
+        this.id = id;
+        this.initialValue = initialValue;
+        this.setTransient(true);
+    }
+
+    // --- WrapComponent Hook (Called after initialization in encodeBegin) ---
+
+    @Override
+    public void render(FacesContext context, HtmlInputText uiComponent) {
+        // Can be used for custom renderer logic if needed
+    }
+
+    // --- Component Lifecycle (Initialization during render phase) ---
 
     @Override
     public void encodeBegin(FacesContext context) throws IOException {
-        // 1. initialize Hook: Transfers the Java state to the JSF component
-        initialize(context, this);
-        // 2. Visibility Check (controlled by initialize)
-        if (!this.isRendered()) { return; }
-
-        // 3. head Hook: Resource Injection
-        head(context, context.getViewRoot());
-
-        // 4. render Hook: Attribute Setting (Last Chance)
+        if (!initialized) {
+            if (this.id != null) {
+                this.setId(this.id);
+            }
+            if (this.initialValue != null) {
+                this.setValue(this.initialValue);
+            }
+            addValueChange(this, this);
+            initialized = true;
+        }
         render(context, this);
-
-        // 5. Delegation to JSF Rendering
         super.encodeBegin(context);
+    }
+
+    private boolean addValueChange(UIComponent e, ValueChangeListener valueChangeListener) {
+        if (e instanceof EditableValueHolder) {
+            EditableValueHolder editableValueHolder = (EditableValueHolder) e;
+            for (ValueChangeListener listener : editableValueHolder.getValueChangeListeners()) {
+                if (listener.getClass().equals(valueChangeListener.getClass())) {
+                    return true;
+                }
+            }
+            editableValueHolder.addValueChangeListener(valueChangeListener);
+        }
+        return false;
+    }
+
+    // Fluent API for event handlers
+    public Text onChanged(Changed<EventObject, String> event) {
+        events.add(event);
+        return this;
+    }
+
+    @Override // ValueChangeListener implementation: delegates to the registered lambdas
+    public void processValueChange(ValueChangeEvent event) throws AbortProcessingException {
+        events.forEach(e -> e.accept(event, event.getNewValue() != null ? event.getNewValue().toString() : ""));
+    }
+
+    @Override // AjaxBehaviorListener implementation: delegates to the registered lambdas
+    public void processAjaxBehavior(AjaxBehaviorEvent event) throws AbortProcessingException {
+        if (event.getComponent() instanceof EditableValueHolder) {
+            Object value = ((EditableValueHolder) event.getComponent()).getValue();
+            events.forEach(e -> e.accept(event, value != null ? value.toString() : null));
+        }
     }
 }
 ```
