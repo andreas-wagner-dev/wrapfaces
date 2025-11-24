@@ -63,7 +63,7 @@ The domain model takes responsibility for its presentation and the mapping of UI
 
 ```java
 // UI-Creation (inside the User class)
-public static class User implements Serializable {
+public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
     private String name;
