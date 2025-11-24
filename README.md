@@ -45,7 +45,7 @@ public class LoginView {
 
     // JSF requires Getter/Setter for the binding
     public HtmlForm getForm() { return form; }
-    public void setForm(HtmlForm form) { this.form = form; }
+    public void setForm(HtmlForm form) { /* empty */ }
 
 }
 ```
