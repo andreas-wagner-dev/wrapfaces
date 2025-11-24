@@ -5,7 +5,7 @@
 💥 **If you are serious about Object-Orientation and love the Web?**
 * 👉 **Then WrapFaces is exactly the right 🎠 Horse for you!**
 
-**Alan Kay's OOP concepts followed by WrapFaces**
+**It follows the OOP concepts of Alan Kay.**
 * *“OOP... means only messaging, local retention, protection and hiding of state-process, with extreme late-binding of all things.”*
 * Objects should not read or modify the internal state of other objects in unexpected ways.
 * An object has an interface that determines how it can be interacted with.
@@ -15,7 +15,7 @@
 ### ⚛️ **Model Autonomy (SRP Enforcement)**
 The **Domain Object** takes full responsibility for its own presentation via the `Model::displayFrom()` method. This enforces the **Single Responsibility Principle (SRP)**.
 
-**Result:** An end to **anemic data models**. The presentation belongs to the object being presented.
+✅ An end to **anemic data models**. The presentation belongs to the object being presented.
 
 ### 🛡️ **Immutability Binding**
 It's prevents **harmful setter calls** from the UI binding. Instead, a **new, immutable instance** of the Domain Model is created from the UI values via the `map()` mechanism.
@@ -112,7 +112,6 @@ public class User implements Serializable {
     }
 
     // The method that displays itself as UI components
-
     public Form displayFrom() {
 
         // PanelGroup for user input
@@ -125,6 +124,7 @@ public class User implements Serializable {
 
         // PanelGroup for the buttons
         PanelGroup buttonGroup = new PanelGroup("btnGrp",
+                // ... only messaging
                 new Button("btnCancel", "Abbrechen").onAction(e -> System.out.println("Canceled.")),
                 new Button("btnSubmit", "Senden").onAction(e -> {
                     // Here, the new User model is retrieved from the UI values
@@ -246,6 +246,7 @@ public static class Text extends HtmlInputText implements WrapComponent<HtmlInpu
 
     @Override
     public void encodeBegin(FacesContext context) throws IOException {
+        // ... late-binding
         if (!initialized) {
             if (this.id != null) {
                 this.setId(this.id);
