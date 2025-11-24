@@ -50,7 +50,7 @@ The standard Maven or Gradle dependency is required:
 ---
 ## 🚀 **The Code**
 
-Stop messing around with XML and do not building your application around DTO.
+Stop messing around with XML and building your application around DTOs.
 * 🔎 **focus on object oriented, type-safe Java code**.
 
 ### The Adapter: No Controller
@@ -88,7 +88,7 @@ only **one line** is needed.
 
 ### The Autonomous Component **(Inside the domain Object class)**
 The domain model takes responsibility for its presentation and the mapping of UI values into a new, immutable instance:
-
+* 👉 **Business logic is only here**.
 ```java
 // UI-Creation (inside the User class)
 public class User implements Serializable {
@@ -200,7 +200,9 @@ public static class Credential implements Serializable {
 }
 ```
 
-## ⚙️ The Library: The Implementation Guide
+## ⚙️ The Library
+
+**The Implementation Guide**
 
 **WrapFaces** enforces discipline through the clear separation of technical inheritance (JSF) and application-specific logic (Hooks). 
 * The wrapper uses the Decorator Pattern to inject logic surgically.
@@ -383,7 +385,7 @@ WrapFaces was developed to **consequently enforce the principles of Object-Orien
 
 ---
 
-## **WrapFaces: MVC with Encapsulation**
+## 💊 **WrapFaces: MVC with Encapsulation**
 
 WrapFaces enforces the **MVC pattern** from a **strictly object-oriented perspective**—a clear demarcation from traditional layered architectures with vertical layers and technical responsibility.
 
