@@ -5,8 +5,8 @@
 💥 **If you are serious about Object-Orientation and love the Web?**
 * 👉 **Then WrapFaces is exactly the right 🎠 Horse for you!**
 
-**OOP concepts followed by WrapFaces**
-* *“OOP to me means only messaging, local retention and protection and hiding of state-process, and extreme late-binding of all things.”*
+**Alan Kay's OOP concepts followed by WrapFaces**
+* *“OOP... means only messaging, local retention, protection and hiding of state-process, with extreme late-binding of all things.”*
 * Objects should not read or modify the internal state of other objects in unexpected ways.
 * An object has an interface that determines how it can be interacted with.
 ---
