@@ -49,6 +49,7 @@ public class LoginView {
 
 }
 ```
+### The View Binding
 
 In the corresponding XHTML it use the **binding** attribute of JSF tags (not value):
 ```xml
