@@ -310,6 +310,26 @@ The **view state** lives as a **long-lived Java object** in the JVM Heap (View-S
 
 ---
 
+## 🛠️ **The Purist's Tools**
+
+WrapFaces provides the necessary tools to enforce a **clean object-oriented architecture**:
+
+### 💥 **Markup Destruction**
+100% of UI logic and the component tree is in Java. The XHTML markup serves merely as a **simple, non-critical container**.
+
+### ⚡ **True State**
+Components live as **Java objects in the heap**. The framework handles the state management.
+
+### 🧩 **Pure Composition**
+The UI tree is defined **type-safely in Java**. Every component is an **encapsulated domain object**.
+
+### 🔒 **Type-Safe Binding**
+The model concept binds UI values via **late-binding** to new, immutable domain model instances.
+
+### 🛠️ **Immediate Action**
+Actions (clicks, changes, etc.) are bound directly to **Java Lambda expressions**.
+
+---
 ## 🛑 **No Compromises: "UI of Objects" as Architectural Dogma**
 
 WrapFaces is more than a JSF commponent library — it is a **manifesto for "UI of Objects"** against anemic data containers and leaky abstractions in the Web UI — a **puristic approach** against the fundamental flaws of data- and markup-centric MVC through consistent, type-safe abstractions.
@@ -354,27 +374,6 @@ WrapFaces was developed to **consequently enforce the principles of Object-Orien
 | **Controller**       | The controller acts as a central hub, knows model internals, and violates the "Tell, Don't Ask" principle as well as the Single Responsibility Principle (SRP). | Logic is integrated directly into type-safe lambda handlers. The controller role is reduced to minimal routing. The component decides for itself. |
 | **State**            | The developer must manually manage state in the HttpSession and handle HTTP details. | Web pages are stateful Java objects in the JVM Heap. HTTP protocol details are transparently abstracted. |
 | **Autonomy**         | Display and manipulation logic is spread across three layers. Low cohesion.         | The domain object bundles data, behavior, and presentation. Maximum cohesion. |
-
----
-
-## 🛠️ **The Purist's Tools**
-
-WrapFaces provides the necessary tools to enforce a **clean object-oriented architecture**:
-
-### 💥 **Markup Destruction**
-100% of UI logic and the component tree is in Java. The XHTML markup serves merely as a **simple, non-critical container**.
-
-### ⚡ **True State**
-Components live as **Java objects in the heap**. The framework handles the state management.
-
-### 🧩 **Pure Composition**
-The UI tree is defined **type-safely in Java**. Every component is an **encapsulated domain object**.
-
-### 🔒 **Type-Safe Binding**
-The model concept binds UI values via **late-binding** to new, immutable domain model instances.
-
-### 🛠️ **Immediate Action**
-Actions (clicks, changes, etc.) are bound directly to **Java Lambda expressions**.
 
 ---
 
