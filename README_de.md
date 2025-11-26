@@ -2,7 +2,7 @@
 WrapFaces ist die objektorientierte **Wrap**per Lösung für Jakarta Server **Faces** (JSF). Das leichgewichtige Framework überträgt die **objektorientierte Disziplin** von Desktop-Frameworks (z.B. Swing/SWT) auf das Web,  was einen "UI of Objects" Ansatz ermöglicht.
 
 **💥 Wenn Du es mit Objektorientierung ernst meinst und Web liebst?** 
-* 👉 Dann ist WrapFaces genau das 👍 Richtige für 😎 Dich!
+* 👉 Dann ist WrapFaces genau das richtige Pferd für 😎 Dich!
 
 ## **🔑 KEY FACTS** *DIE 4 ABSOLUTEN GEBOTE*
 
