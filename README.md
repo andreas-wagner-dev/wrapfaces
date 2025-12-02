@@ -19,7 +19,7 @@
 The Object as **Domain Model** takes full responsibility for its own presentation via the `Model::displayFrom()` method. This enforces the **Single Responsibility Principle** (SRP) in the object oriented way.
 </details>
 
-✅ An end to **anemic data models**. The presentation belongs to the object being presented.
+An end to **anemic data models**. The presentation belongs to the object being presented.
 
 ### 🛡️ **Immutability Binding**
 <details>
@@ -27,7 +27,7 @@ The Object as **Domain Model** takes full responsibility for its own presentatio
 It's prevents **harmful setter calls** from the UI binding. Instead, a **new, immutable instance** of the Domain Model is created from the UI values via the `map()` mechanism.
 </details>
 
-✅ Guaranteed data integrity and reduction of side effects.
+Guaranteed data integrity and reduction of side effects.
 
 ### 🚫 **No Markup Boilerplate**
 <details>
@@ -35,7 +35,7 @@ It's prevents **harmful setter calls** from the UI binding. Instead, a **new, im
 The entire **UI structure and logic** is defined exclusively in **type-safe Java code**. The XHTML serves merely as an **inactive, empty container**.
 </details>
 
-✅ 100% refactorability, compile-time validation, and elimination of XML boilerplate.
+100% refactorability, compile-time validation, and elimination of XML boilerplate.
 
 ### 🧠 **True Heap State**
 <details>
@@ -43,7 +43,7 @@ The entire **UI structure and logic** is defined exclusively in **type-safe Java
 The **view state** lives as a **long-lived Java object** in the JVM Heap (View-Scoped). The statelessness of the HTTP protocol is **transparently and completely abstracted**.
 </details>
 
-✅ A **desktop application development experience** on the web; focus on OO logic, not protocol details.
+A **desktop application development experience** on the web; focus on OO logic, not protocol details.
 
 ---
 ## 📥 **Installation**
