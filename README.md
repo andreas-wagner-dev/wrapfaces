@@ -18,7 +18,7 @@
 The Object as **Domain Model** takes full responsibility for its own presentation via the `Model::displayFrom()` method. This enforces the **Single Responsibility Principle** (SRP) in the object oriented way.
 * An end to **anemic data models**. The presentation belongs to the object being presented.
 
-### **Immutability Binding**
+### **Immutability**
 
 It's prevents **harmful setter calls** from the UI binding. Instead, a **new, immutable instance** of the Domain Model is created from the UI values via the `map()` mechanism.
 * Guaranteed data integrity and reduction of side effects.
@@ -49,7 +49,7 @@ The standard Maven or Gradle dependency is required:
 ---
 ## 🚀 **The Code**
 
-Stop messing around with **XML** and building your application around **Data Transfer Objects** (DTOs).
+Prevent build your application around Data Transfer Objects (DTOs) and XML Markups.
 * 🔎 **The focus is on object-oriented, type-safe Java code.**
 
 ### The Adapter: No Controller
