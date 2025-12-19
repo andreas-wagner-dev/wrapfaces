@@ -1,13 +1,13 @@
 # 🎭 **WrapFaces** (Incubator state!!!)
 
-**WrapFaces** is a component **Wrap**per solution for Jakarta Server **Faces** (JSF).
-</br>It's transfers the **object-oriented discipline** of desktop frameworks like Swing to the web.
+**WrapFaces** is a component **Wrap**per solution for Jakarta Server **Faces** (JSF).  
+It's transfers the object-oriented discipline of desktop frameworks like Swing to the web.
 
-**If you are serious about Object-Orientation and love the Web?**
+**If you are serious about object-orientation and love the Web?**
 * Then WrapFaces is exactly the right Horse for you!
 
-**It enables you to build web based *user interfaces* according to the original concepts of object-oriented programming as defined by Alan Kay:**
-* *“OOP means only messaging, local retention, protection and hiding of state-process, with extreme late-binding of all things.”*
+It enables you to build web based ***user interfaces*** according to the original concepts of object-oriented programming as defined by Alan Kay:
+* ***“OOP means only messaging, local retention, protection and hiding of state-process, with extreme late-binding of all things.”***
 * Objects should not read or modify the internal state of other objects in unexpected ways.
 * An object has an interface that determines how it can be interacted with.
 ---
