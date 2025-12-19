@@ -325,8 +325,8 @@ The design philosophy of WrapFaces is based on measurable OOP metrics (Cohesion/
     
 | **Source**                          | **Concept**                                                                                                                                                                                                 |
 |-------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **javadevguy.wordpress.com**        | Pragmatic SRP & Cohesion: The definition of SRP as maximizing cohesion and minimizing coupling originates significantly from Robert Bräutigam.                                                      |
-| **yegor256.com**                    | Object Mechanics & Immutability: The concepts of encapsulation, immutability, and the strict avoidance of getters/setters (Naked Data) are heavily influenced by Yegor Bugayenko. |
+| **javadevguy.wordpress.com**        | **Pragmatic SRP & Cohesion:** The definition of SRP as maximizing cohesion and minimizing coupling. **Object Mechanics & Immutability:** The concepts of encapsulation, immutability, and the strict avoidance of getters/setters (Naked Data)                                                     |
+
 
 ---
 
